@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 var search;
 
-app.post('/search', (req, res) => {
+app.post('/', (req, res) => {
     search = req.body;
     console.log("--------------------------------------------------");
     console.log(search);
@@ -21,7 +21,7 @@ app.post('/search', (req, res) => {
     });
 
     es.search().then(function (events) {
-        res.send(JSON.stringify(events));
+        res.send(JSON.stringify(events, undefined,4));
     }).catch(function (error) {
         console.error(JSON.stringify(error));
     });
